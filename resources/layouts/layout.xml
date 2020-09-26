@@ -1,0 +1,22 @@
+<layout id="WatchFace">
+    <drawable class="Background" />
+    
+    <label id="Head" text="user@watch:~ $ now" x="20" y="45" font="Graphics.FONT_SMALL" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_WHITE" />  
+    <label id="TimeLabel" justification="Graphics.TEXT_JUSTIFY_LEFT" />
+    <label id="DateDisplay" justification="Graphics.TEXT_JUSTIFY_LEFT" />  
+    <label id="BatteryDisplay" justification="Graphics.TEXT_JUSTIFY_LEFT"/>
+    <label id="StepCountDisplay" justification="Graphics.TEXT_JUSTIFY_LEFT"/> 
+    <label id="HeartrateDisplay" justification="Graphics.TEXT_JUSTIFY_LEFT" />  
+    <label id="MessageCountDisplay" justification="Graphics.TEXT_JUSTIFY_LEFT" />
+    <label id="Bottom" text="user@watch:~ $" font="Graphics.FONT_SMALL" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_WHITE" /> 
+    <label id="Underscore" text="_" font="Graphics.FONT_SMALL" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_WHITE" /> 
+    
+    
+    <label id="TimeText" text="[TIME]" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_WHITE" />  
+    <label id="DateText" text="[DATE]" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_WHITE" />  
+    <label id="BatteryText" text="[BATT]" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_WHITE" />  
+    <label id="StepText" text="[STEP]" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_WHITE" />  
+    <label id="MessageText" text="[NOTE]" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_WHITE" />  
+    
+    
+</layout>
