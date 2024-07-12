@@ -6,15 +6,15 @@ class TerminalFaceBackground extends WatchUi.Drawable {
 
     function initialize() {
         var dictionary = {
-            :identifier => "Background"
+            :identifier => "TerminalFaceBackground"
         };
 
         Drawable.initialize(dictionary);
     }
 
     function draw(dc) {
-        // Set the background color then call to clear the screen
-        dc.setColor(Graphics.COLOR_TRANSPARENT, Application.getApp().getProperty("BackgroundColor"));
+        // Set the TerminalFaceBackground color then call to clear the screen
+        dc.setColor(Graphics.COLOR_TRANSPARENT, Application.getApp().getProperty("TerminalFaceBackgroundColor"));
         dc.clear();
     }
 

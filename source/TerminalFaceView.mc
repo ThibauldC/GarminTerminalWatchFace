@@ -1,8 +1,8 @@
-using Toybox.WatchUi;
-using Toybox.Graphics;
-using Toybox.System;
-using Toybox.Lang;
-using Toybox.Application;
+import Toybox.WatchUi;
+import Toybox.Graphics;
+import Toybox.System;
+import Toybox.Lang;
+import Toybox.Application;
 using Toybox.Time.Gregorian as Date;
 using Toybox.ActivityMonitor as Mon;
 
@@ -12,13 +12,13 @@ class TerminalFaceView extends WatchUi.WatchFace {
 	var default_font = WatchUi.loadResource(Rez.Fonts.font_ubuntu);
 	var default_font_hb = WatchUi.loadResource(Rez.Fonts.font_ubuntu_hb);
 	var def_start_Y = 45;
-	var def_increment_Y = 20.5;
+	var def_increment_Y = 21;
 	var def_start_X = 20;
 	var def_increment_X = 60;
 	var text_color = 0x000000;
 	
     //in right order
-	var list = ["DateText","TimeText", "BatteryText", "StepText",  "MessageText"];
+	var list = ["DateText","TimeText", "BatteryText", "StepText",  "HeartText"];
 
 
     // Load your resources here
@@ -48,8 +48,8 @@ class TerminalFaceView extends WatchUi.WatchFace {
 		setDateDisplay();
 		setBatteryDisplay();
 		setStepCountDisplay();
-		setNotificationCountDisplay();
-		//setHeartrateDisplay();
+		//setNotificationCountDisplay();
+		setHeartrateDisplay();
 		setDisplayText();
 		setBottom();
 		
@@ -76,7 +76,7 @@ class TerminalFaceView extends WatchUi.WatchFace {
     private function setDisplayText() {
     	
     	for (var i=0; i<list.size(); i++){
-    		var view = View.findDrawableById(list[i]);
+    		var view = View.findDrawableById(list[i]) as Text;
 			view.setFont(default_font);
 			view.setColor(text_color);
 			view.setLocation(def_start_X, def_start_Y + (i+1)*def_increment_Y);
@@ -85,7 +85,7 @@ class TerminalFaceView extends WatchUi.WatchFace {
     }
     
     private function setHead() {        
-		var view = View.findDrawableById("Head");
+		var view = View.findDrawableById("Head") as Text;
 		view.setFont(default_font_hb);
 		view.setColor(text_color);
 		view.setLocation(def_start_X, def_start_Y + 0*def_increment_Y - 3);  
@@ -93,7 +93,7 @@ class TerminalFaceView extends WatchUi.WatchFace {
     }
     
     private function setBottom() {        
-		var view = View.findDrawableById("Bottom");
+		var view = View.findDrawableById("Bottom") as Text;
 		view.setFont(default_font_hb);
 		view.setColor(text_color);
 		view.setLocation(def_start_X, def_start_Y + (list.size()+1)*def_increment_Y + 3);  
@@ -140,7 +140,7 @@ class TerminalFaceView extends WatchUi.WatchFace {
 		
 		
         // Update the view
-        var view = View.findDrawableById("TimeLabel");
+        var view = View.findDrawableById("TimeLabel") as Text;
         view.setFont(default_font);
         view.setLocation(def_start_X + def_increment_X, def_start_Y + (list.indexOf("TimeText")+1)*def_increment_Y);
         view.setColor(Application.getApp().getProperty("PinkColor"));
@@ -151,7 +151,7 @@ class TerminalFaceView extends WatchUi.WatchFace {
     	var now = Time.now();
 		var date = Date.info(now, Time.FORMAT_LONG);
 		var dateString = Lang.format("$1$ $2$ $3$ $4$", [date.day_of_week, date.month, date.day, date.year]);
-		var dateDisplay = View.findDrawableById("DateDisplay");
+		var dateDisplay = View.findDrawableById("DateDisplay") as Text;
 		dateDisplay.setFont(default_font);
 		dateDisplay.setLocation(def_start_X + def_increment_X, def_start_Y + (list.indexOf("DateText")+1)*def_increment_Y);
         dateDisplay.setColor(Application.getApp().getProperty("YellowColor"));   
@@ -175,7 +175,7 @@ class TerminalFaceView extends WatchUi.WatchFace {
     	}
     	battBar += "] ";
     	
-		var batteryDisplay = View.findDrawableById("BatteryDisplay"); 
+		var batteryDisplay = View.findDrawableById("BatteryDisplay") as Text; 
 		batteryDisplay.setFont(default_font);
         batteryDisplay.setColor(Application.getApp().getProperty("GreenColor"));
 		batteryDisplay.setLocation(def_start_X + def_increment_X, def_start_Y + (list.indexOf("BatteryText")+1)*def_increment_Y);     
@@ -185,7 +185,7 @@ class TerminalFaceView extends WatchUi.WatchFace {
     private function setStepCountDisplay() {
     	var stepCount = Mon.getInfo().steps.toString();	
     	var stepGoal = Mon.getInfo().stepGoal.toString();	
-		var stepCountDisplay = View.findDrawableById("StepCountDisplay");
+		var stepCountDisplay = View.findDrawableById("StepCountDisplay") as Text;
 		stepCountDisplay.setFont(default_font);
         stepCountDisplay.setColor(Application.getApp().getProperty("CyanColor"));
 		stepCountDisplay.setLocation(def_start_X + def_increment_X, def_start_Y + (list.indexOf("StepText")+1)*def_increment_Y);   
@@ -204,7 +204,7 @@ class TerminalFaceView extends WatchUi.WatchFace {
 			formattedNotificationAmount = notificationAmount.format("%d");
 		}
 	
-		var notificationCountDisplay = View.findDrawableById("MessageCountDisplay");
+		var notificationCountDisplay = View.findDrawableById("MessageCountDisplay") as Text;
         notificationCountDisplay.setColor(Application.getApp().getProperty("OrangeColor"));		
 		notificationCountDisplay.setFont(default_font); 
 		notificationCountDisplay.setLocation(def_start_X + def_increment_X, def_start_Y + (list.indexOf("MessageText")+1)*def_increment_Y);   
@@ -221,7 +221,7 @@ class TerminalFaceView extends WatchUi.WatchFace {
     		heartRate = "";
     	}
     	
-		var heartrateDisplay = View.findDrawableById("HeartrateDisplay");   
+		var heartrateDisplay = View.findDrawableById("HeartrateDisplay") as Text;   
         heartrateDisplay.setColor(Application.getApp().getProperty("RedColor"));
 		heartrateDisplay.setFont(default_font);
 		heartrateDisplay.setLocation(def_start_X + def_increment_X, def_start_Y + (list.indexOf("HeartText")+1)*def_increment_Y);   

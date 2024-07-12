@@ -26,10 +26,10 @@ class TerminalFaceApp extends Application.AppBase {
         	    
         var text_color = 0xFFFFFF;
         
-        if (Application.getApp().getProperty("BackgroundColor") == 0xFFFFFF){
+        if (Application.getApp().getProperty("TerminalFaceBackgroundColor") == 0xFFFFFF){
 	    	Application.getApp().setProperty("ForegroundColor", 0x000000);
 	    }
-	    else if (Application.getApp().getProperty("BackgroundColor") == 0x000000){
+	    else if (Application.getApp().getProperty("TerminalFaceBackgroundColor") == 0x000000){
 			Application.getApp().setProperty("ForegroundColor", 0xFFFFFF);
 	    }
         	    
