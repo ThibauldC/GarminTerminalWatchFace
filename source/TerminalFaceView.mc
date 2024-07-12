@@ -6,7 +6,7 @@ using Toybox.Application;
 using Toybox.Time.Gregorian as Date;
 using Toybox.ActivityMonitor as Mon;
 
-class testView extends WatchUi.WatchFace {
+class TerminalFaceView extends WatchUi.WatchFace {
 	
 	// var default_font = Graphics.FONT_GLANCE;
 	var default_font = WatchUi.loadResource(Rez.Fonts.font_ubuntu);
