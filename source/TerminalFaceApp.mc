@@ -1,7 +1,7 @@
 using Toybox.Application;
 using Toybox.WatchUi;
 
-class testApp extends Application.AppBase {
+class TerminalFaceApp extends Application.AppBase {
 
     function initialize() {
         AppBase.initialize();
@@ -17,7 +17,7 @@ class testApp extends Application.AppBase {
 
     // Return the initial view of your application here
     function getInitialView() {
-        return [ new testView() ];
+        return [ new TerminalFaceView() ];
     }
 
     // New app settings have been received so trigger a UI update
