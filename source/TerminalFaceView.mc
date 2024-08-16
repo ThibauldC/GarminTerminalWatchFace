@@ -8,7 +8,6 @@ using Toybox.ActivityMonitor as Mon;
 
 class TerminalFaceView extends WatchUi.WatchFace {
 	
-	// var default_font = Graphics.FONT_GLANCE;
 	var default_font = WatchUi.loadResource(Rez.Fonts.font_ubuntu);
 	var default_font_hb = WatchUi.loadResource(Rez.Fonts.font_ubuntu_hb);
 	var def_start_Y = 45;
@@ -30,8 +29,6 @@ class TerminalFaceView extends WatchUi.WatchFace {
 	
     function initialize() {
         WatchFace.initialize();
-        
-    
     }
 
     // Called when this View is brought to the foreground. Restore
@@ -212,30 +209,28 @@ class TerminalFaceView extends WatchUi.WatchFace {
     }
     
     private function setHeartrateDisplay() {
-    	var heartRate = "";
+    	var heartRate = "-";
     	
-    	if(Mon has :INVALID_HR_SAMPLE) {
-    		heartRate = retrieveHeartrateText();
-    	}
-    	else {
-    		heartRate = "";
-    	}
+    	heartRate = retrieveHeartrateText();
     	
 		var heartrateDisplay = View.findDrawableById("HeartrateDisplay") as Text;   
-        heartrateDisplay.setColor(Application.getApp().getProperty("RedColor"));
+        heartrateDisplay.setColor(Application.getApp().getProperty("OrangeColor"));
 		heartrateDisplay.setFont(default_font);
 		heartrateDisplay.setLocation(def_start_X + def_increment_X, def_start_Y + (list.indexOf("HeartText")+1)*def_increment_Y);   
 		heartrateDisplay.setText(heartRate + " bpm");
 	}
 	    
     private function retrieveHeartrateText() {
-    	var heartrateIterator = ActivityMonitor.getHeartRateHistory(null, false);
-		var currentHeartrate = heartrateIterator.next().heartRate;
+		var currentHeartRate = Activity.getActivityInfo().currentHeartRate;
+		if(currentHeartRate == null){
+			var heartrateIterator = ActivityMonitor.getHeartRateHistory(1, true);
+			currentHeartRate = heartrateIterator.next().heartRate.toString();
 	
-		if(currentHeartrate == Mon.INVALID_HR_SAMPLE) {
-			return "";
-		}		
-	
-		return currentHeartrate.format("%d");
+			if(currentHeartRate == Mon.INVALID_HR_SAMPLE) {
+				currentHeartRate = "---";
+			}
+		}
+
+		return currentHeartRate;
     }    
 }
