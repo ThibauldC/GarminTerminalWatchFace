@@ -3,10 +3,10 @@
     <property id="TerminalFaceBackgroundColor" type="number">0x000000</property>
     <property id="ForegroundColor" type="number">0xFFFFFF</property>
     <property id="CyanColor" type="number">0x00B0FF</property>
-    <property id="GreenColor" type="number">0x43FF00</property>
+    <property id="GreenColor" type="number">0x28893E</property>
     <property id="RedColor" type="number">0xFF0000</property>
     <property id="PinkColor" type="number">0xFF00CC</property>
-    <property id="OrangeColor" type="number">0xFF7700</property>
+    <property id="OrangeColor" type="number">0xFA831A</property>
     <property id="YellowColor" type="number">0xFFFF00</property>
     <property id="UseMilitaryFormat" type="boolean">false</property>
 

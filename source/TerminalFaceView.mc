@@ -17,7 +17,7 @@ class TerminalFaceView extends WatchUi.WatchFace {
 	var text_color = 0x000000;
 	
     //in right order
-	var list = ["DateText","TimeText", "BatteryText", "StepText",  "HeartText"];
+	var list = ["TimeText", "DateText", "BatteryText", "StepText",  "HeartText"];
 
 
     // Load your resources here
@@ -140,7 +140,7 @@ class TerminalFaceView extends WatchUi.WatchFace {
         var view = View.findDrawableById("TimeLabel") as Text;
         view.setFont(default_font);
         view.setLocation(def_start_X + def_increment_X, def_start_Y + (list.indexOf("TimeText")+1)*def_increment_Y);
-        view.setColor(Application.getApp().getProperty("PinkColor"));
+        view.setColor(Application.getApp().getProperty("GreenColor"));
         view.setText(timeString);
     }
     
@@ -151,7 +151,7 @@ class TerminalFaceView extends WatchUi.WatchFace {
 		var dateDisplay = View.findDrawableById("DateDisplay") as Text;
 		dateDisplay.setFont(default_font);
 		dateDisplay.setLocation(def_start_X + def_increment_X, def_start_Y + (list.indexOf("DateText")+1)*def_increment_Y);
-        dateDisplay.setColor(Application.getApp().getProperty("YellowColor"));   
+        dateDisplay.setColor(Application.getApp().getProperty("CyanColor"));   
 		dateDisplay.setText(dateString);	    	
     }
     
@@ -184,7 +184,7 @@ class TerminalFaceView extends WatchUi.WatchFace {
     	var stepGoal = Mon.getInfo().stepGoal.toString();	
 		var stepCountDisplay = View.findDrawableById("StepCountDisplay") as Text;
 		stepCountDisplay.setFont(default_font);
-        stepCountDisplay.setColor(Application.getApp().getProperty("CyanColor"));
+        stepCountDisplay.setColor(Application.getApp().getProperty("PinkColor"));
 		stepCountDisplay.setLocation(def_start_X + def_increment_X, def_start_Y + (list.indexOf("StepText")+1)*def_increment_Y);   
 		stepCountDisplay.setText(stepCount + "/" + stepGoal + " steps");		
     }
